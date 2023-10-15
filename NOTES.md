@@ -39,3 +39,45 @@ No ato que você digita o comando acima, o Bun.js criará os seguintes arquivos:
 
 - **tsconfig.json**: arquivo de configuração do TypeScript. Nele você encontrará as configurações do TypeScript.
 
+## Criando um Hello World diferente com Bun.js
+
+Vamos criar um Hello World diferente com Bun.js. Dentro do arquivo `indext.ts` na raiz do projeto, inclua o seguinte bloco de código:
+```ts
+/**
+ * file: index.ts
+ * description: file responsible for run Bun.js application
+ * date: 10/15/2023
+ * author: Glaucia Lemos <Twitter: @glaucia_lemos86>
+ */
+
+const server = Bun.serve({
+  port: 3000,
+  fetch(_req) {
+    return new Response('Fala, meus consagrados(as)!');
+  },
+});
+
+console.log(`Application running at http://localhost:${server.port}...`);
+```
+
+Agora para executar o projeto, digite o comando abaixo:
+
+```bash
+bun index.ts
+```
+
+Mas, em vez de executar a aplicação diretamente no arquivo `index.ts`, podemos fazer o seguinte, abre o arquivo `package.json` e inclua o seguinte bloco de código:
+
+```json
+"scripts": {
+  "start": "bun index.ts"
+}
+```
+
+Agora, para executar o projeto, basta digitar o seguinte comando:
+
+```bash
+bun start
+```
+
+Abre o browser e digite o seguinte endereço: `http://localhost:3000` e veja o resultado!
